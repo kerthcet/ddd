@@ -1,1 +1,1 @@
-### Domain-driven Design project demo
+## DDD project-demo
