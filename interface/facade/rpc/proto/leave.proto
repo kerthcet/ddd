@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package interface.facade.rpc.proto;
+
+option go_package = "interface/facade/rpc/code;code";
+
+enum LeaveCode {
+    OK = 0;
+    CREATE_LEAVE_ERROR = 20101;
+}

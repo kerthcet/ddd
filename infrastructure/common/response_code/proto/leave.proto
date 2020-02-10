@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package infrastructure.common.response_code.proto;
+
+option go_package = "infrastructure/common/response_code/code;code";
+
+enum LeaveCode {
+    OK = 0;
+    CREATE_LEAVE_ERROR = 20101;
+}

@@ -1,0 +1,65 @@
+version: "2.2"
+
+services:
+  ddd:
+    build: .
+    image: "ddd"
+    container_name: "ddd"
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    working_dir: /app
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: mysql://kid:123456@tcp(dddMysql)/ddd?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+      KAFKA_HOST: kafka:9092
+      GO111MODULE: "on"
+      GOPROXY: "https://goproxy.cn"
+    expose:
+      - "8080"
+    command: ["go", "run", "main.go"]
+    restart: always
+    links:
+      - dddMysql
+    depends_on:
+      - dddMysql
+  dddMysql:
+    image: mysql:5.7
+    container_name: "dddMysql"
+    # volumes:
+      # # - ~/data/mysql:/var/lib/mysql
+      # - ~/data/raw_data/:/raw_data
+      # - ~/data/raw_data/mysql-dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: ddd
+      MYSQL_USER: kid
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "1433:3306"
+    expose:
+      - "3306"
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    container_name: zookeeper
+    mem_limit: 1024M
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+  kafka:
+    image: confluentinc/cp-kafka
+    container_name: kafka
+    mem_limit: 1024M
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_NO: 1
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_HEAP_OPTS: "-Xmx512M -Xms16M"
