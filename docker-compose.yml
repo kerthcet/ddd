@@ -21,20 +21,18 @@ services:
       - "8080"
     command: ["go", "run", "main.go"]
     restart: always
-    links:
-      - dddMysql
     depends_on:
       - dddMysql
+      - kafka
+    networks:
+      - dddnet
   dddMysql:
     image: mysql:5.7
     container_name: "dddMysql"
-    # volumes:
-      # # - ~/data/mysql:/var/lib/mysql
-      # - ~/data/raw_data/:/raw_data
-      # - ~/data/raw_data/mysql-dump:/docker-entrypoint-initdb.d
+    volumes:
+      - ~/data/raw_data/mysql-dump:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: "root"
-      # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: ddd
       MYSQL_USER: kid
       MYSQL_PASSWORD: 123456
@@ -42,12 +40,16 @@ services:
       - "1433:3306"
     expose:
       - "3306"
+    networks:
+      - dddnet
   zookeeper:
     image: confluentinc/cp-zookeeper
     container_name: zookeeper
     mem_limit: 1024M
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - dddnet
   kafka:
     image: confluentinc/cp-kafka
     container_name: kafka
@@ -63,3 +65,8 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_HEAP_OPTS: "-Xmx512M -Xms16M"
+    networks:
+      - dddnet
+networks:
+  dddnet:
+    driver: "bridge"

@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 
-	"ddd/infrastructure/config"
 	// "ddd/infrastructure/util/driver"
 	"ddd/interface/facade/rest/router"
 	"ddd/interface/facade/rest/router/middleware"
@@ -14,7 +13,6 @@ func main() {
 	// driver.DB.AutoMigrate(&po.Leave{})
 
 	g := gin.New()
-	log.Println(config.ENV.GinMode)
 
 	middlewares := []gin.HandlerFunc{
 		middleware.SetCors(),

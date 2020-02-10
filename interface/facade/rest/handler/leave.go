@@ -12,12 +12,12 @@ import (
 
 // Leave 请假单
 func Leave(c *gin.Context) {
-	// defer func() {
-	//     if r := recover(); r != nil {
-	//         log.Error(r)
-	//         SendResponse(c, code.Code_UNKNOWN, r)
-	//     }
-	// }()
+	defer func() {
+		if r := recover(); r != nil {
+			log.Error(r)
+			SendResponse(c, code.Code_UNKNOWN, r)
+		}
+	}()
 
 	var leave dto.CreateLeaveRequestDTO
 	if err := c.ShouldBindJSON(&leave); err != nil {
@@ -28,8 +28,7 @@ func Leave(c *gin.Context) {
 
 	data, err := service.CreateLeave(factory.ToCreateLeaveDO(&leave))
 	if err != nil {
-		log.Error(err)
-		SendResponse(c, code.Code_OK, err)
+		SendResponse(c, code.Code_UNKNOWN, err)
 		return
 	}
 	SendResponse(c, nil, factory.ToCreateLeaveDTO(data))

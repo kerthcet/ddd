@@ -13,10 +13,8 @@ type RepoImpl struct{}
 // FindPersonByID 根据id找到对应的person
 func (r *RepoImpl) FindPersonByID(id int) (*personPO.Person, error) {
 	var person personPO.Person
-	log.Error("jjjjjjjjjjjjjjjjjjj", driver.DB)
 	err := driver.DB.Model(&personPO.Person{}).
-		Where("id = ?", id).
-		First(&person).Error
+		Where("id = ?", id).First(&person).Error
 
 	if err != nil {
 		log.Error(err)

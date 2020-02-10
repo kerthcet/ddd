@@ -18,16 +18,17 @@ var DB *gorm.DB
 func init() {
 	driver := strings.Split(config.ENV.DatabaseURL, "://")
 
-	DB, err := gorm.Open(driver[0], driver[1])
-	log.Info(config.ENV.DatabaseURL)
+	var err error
+	DB, err = gorm.Open(driver[0], driver[1])
 	if err != nil {
-		log.Info(err)
+		log.Error(err)
 		panic(err)
 	}
 
 	DB.DB().SetMaxIdleConns(10)
 	connNumber, _ := strconv.ParseInt("64", 10, 64)
 	DB.DB().SetMaxOpenConns(int(connNumber))
+	DB.DB().SetMaxIdleConns(int(connNumber))
 
 	DB.LogMode(config.ENV.GormLogMode)
 }
