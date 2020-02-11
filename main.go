@@ -4,11 +4,14 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 
+	"ddd/infrastructure/util/migrate"
 	"ddd/interface/facade/rest/router"
 	"ddd/interface/facade/rest/router/middleware"
 )
 
 func main() {
+	migrate.Run()
+
 	g := gin.New()
 
 	middlewares := []gin.HandlerFunc{

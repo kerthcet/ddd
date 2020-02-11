@@ -8,7 +8,8 @@ import (
 	"ddd/infrastructure/util/driver"
 )
 
-func init() {
+// Run migrate
+func Run() {
 	log.Info("Starting to migrate")
 	driver.DB.AutoMigrate(&personPO.Person{})
 	driver.DB.AutoMigrate(&leavePO.Leave{})
