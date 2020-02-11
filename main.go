@@ -7,6 +7,8 @@ import (
 	"ddd/infrastructure/util/migrate"
 	"ddd/interface/facade/rest/router"
 	"ddd/interface/facade/rest/router/middleware"
+	"ddd/interface/facade/rpc/client"
+	"ddd/interface/facade/rpc/server"
 )
 
 func main() {
@@ -23,9 +25,12 @@ func main() {
 		middlewares...,
 	)
 
-	log.Printf("Start to listening port: 8080")
+	log.Println("Grpc listen on port: 9090")
+	go server.Run()
+
+	client.Send()
+	log.Printf("Server listen on port: 8080")
 	if err := g.Run(":8080"); err != nil {
-		log.Print(err)
-		panic(err)
+		log.Fatalf("%+v", err)
 	}
 }

@@ -6,7 +6,7 @@ import (
 
 	"ddd/application/service"
 	"ddd/infrastructure/common/response_code/code"
-	"ddd/interface/dto"
+	"ddd/interface/dto/rest"
 	"ddd/interface/factory"
 )
 
@@ -19,7 +19,7 @@ func Leave(c *gin.Context) {
 		}
 	}()
 
-	var leave dto.CreateLeaveRequestDTO
+	var leave rest.CreateLeaveRequestDTO
 	if err := c.ShouldBindJSON(&leave); err != nil {
 		log.Error(err)
 		SendResponse(c, code.Code_INVALID_ARGUMENT, err)

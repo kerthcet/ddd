@@ -1,4 +1,4 @@
-package dto
+package rest
 
 import (
 	"time"
@@ -16,10 +16,10 @@ type CreateLeaveRequestDTO struct {
 // CreateLeaveResponseDTO DTO
 type CreateLeaveResponseDTO struct {
 	LeaveID       int       `json:"leaveId"`
-	StartTime     time.Time `json:"startTime"`
-	EndTime       time.Time `json:"endTime"`
 	ApplicantID   int       `json:"applicanntId"`
 	ApplicantName string    `json:"applicantName"`
 	ApproverID    int       `json:"approverId"`
 	ApproverName  string    `jsonn:"approverName"`
+	StartTime     time.Time `json:"startTime"`
+	EndTime       time.Time `json:"endTime"`
 }

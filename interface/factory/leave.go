@@ -3,11 +3,11 @@ package factory
 import (
 	leaveEntity "ddd/domain/leave/entity"
 	leaveVO "ddd/domain/leave/entity/valueobject"
-	"ddd/interface/dto"
+	"ddd/interface/dto/rest"
 )
 
 // ToCreateLeaveDO DTO -> DO
-func ToCreateLeaveDO(leave *dto.CreateLeaveRequestDTO) *leaveEntity.LeaveDO {
+func ToCreateLeaveDO(leave *rest.CreateLeaveRequestDTO) *leaveEntity.LeaveDO {
 	applicant := &leaveVO.Applicant{
 		PersonID: leave.ApplicantID,
 	}
@@ -26,8 +26,8 @@ func ToCreateLeaveDO(leave *dto.CreateLeaveRequestDTO) *leaveEntity.LeaveDO {
 }
 
 // ToCreateLeaveDTO DO -> DTO
-func ToCreateLeaveDTO(leave *leaveEntity.LeaveDO) *dto.CreateLeaveResponseDTO {
-	return &dto.CreateLeaveResponseDTO{
+func ToCreateLeaveDTO(leave *leaveEntity.LeaveDO) *rest.CreateLeaveResponseDTO {
+	return &rest.CreateLeaveResponseDTO{
 		LeaveID:       leave.ID,
 		StartTime:     leave.StartTime,
 		EndTime:       leave.EndTime,
