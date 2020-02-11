@@ -4,14 +4,11 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 
-	// "ddd/infrastructure/util/driver"
 	"ddd/interface/facade/rest/router"
 	"ddd/interface/facade/rest/router/middleware"
 )
 
 func main() {
-	// driver.DB.AutoMigrate(&po.Leave{})
-
 	g := gin.New()
 
 	middlewares := []gin.HandlerFunc{
