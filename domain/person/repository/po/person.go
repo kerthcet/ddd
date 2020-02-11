@@ -2,12 +2,7 @@ package po
 
 import (
 	"time"
-	// "ddd/infrastructure/util/driver"
 )
-
-func init() {
-	// driver.DB.AutoMigrate(&Person{})
-}
 
 // Model 基本字段
 type Model struct {

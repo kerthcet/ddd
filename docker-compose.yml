@@ -29,8 +29,8 @@ services:
   dddMysql:
     image: mysql:5.7
     container_name: "dddMysql"
-    volumes:
-      - ~/data/raw_data/mysql-dump:/docker-entrypoint-initdb.d
+    # volumes:
+      # - ~/data/raw_data/mysql-dump:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: ddd
