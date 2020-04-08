@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 
 	"ddd/interface/dto/rpc"
-	"ddd/interface/facade/rpc/handler"
+	"ddd/interface/presenter/rpc/handler"
 )
 
 const (

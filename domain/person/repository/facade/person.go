@@ -1,4 +1,4 @@
-package facade
+package presenter
 
 import (
 	"github.com/golobby/container"

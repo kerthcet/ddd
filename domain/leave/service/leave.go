@@ -3,7 +3,7 @@ package service
 import (
 	leaveEntity "ddd/domain/leave/entity"
 	leaveEvent "ddd/domain/leave/event"
-	leaveRepo "ddd/domain/leave/repository/facade"
+	leaveRepo "ddd/domain/leave/repository/presenter"
 	"ddd/infrastructure/util/driver"
 )
 
