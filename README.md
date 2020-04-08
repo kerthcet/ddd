@@ -5,11 +5,11 @@
     │   └── service
     │       └── leave.go
     ├── domain                                            --- 领域层
-    │   ├── leave                                         
+    │   ├── leave                                         --- 聚合
     │   │   ├── entity                                    --- 实体
     │   │   │   ├── approval.go
     │   │   │   ├── leave.go
-    │   │   │   └── valueobject
+    │   │   │   └── valueobject                           --- 值对象
     │   │   │       ├── ApprovalType.go
     │   │   │       ├── applicant.go
     │   │   │       └── approver.go
@@ -17,22 +17,22 @@
     │   │   │   ├── event_type.go
     │   │   │   └── leave.go
     │   │   ├── repository                                --- 仓储接口
-    │   │   │   ├── facade
+    │   │   │   ├── presenter
     │   │   │   │   └── leave.go
-    │   │   │   ├── persistence
+    │   │   │   ├── persistence                           --- CRUD
     │   │   │   │   └── mysql
     │   │   │   │       └── leave.go
-    │   │   │   └── po
+    │   │   │   └── po                                    --- 持久化对象
     │   │   │       └── leave.go
     │   │   └── service
-    │   │       ├── event_factory.go
+    │   │       ├── event_factory.go                      --- 工厂函数
     │   │       ├── leave.go
     │   │       └── leave_factory.go
     │   └── person                                        
     │       ├── entity
     │       │   └── person.go
     │       ├── repository
-    │       │   ├── facade
+    │       │   ├── presenter
     │       │   │   └── person.go
     │       │   ├── persistence
     │       │   │   └── mysql
@@ -65,8 +65,8 @@
     │       ├── migrate
     │       │   └── migrate.go
     │       └── tools
-    ├── interface                                          --- 接口层
-    │   ├── dto                                     
+    ├── interface                                          --- 用户接口层
+    │   ├── dto                                            --- DTO对象定义
     │   │   ├── rest
     │   │   │   └── createLeave.go
     │   │   └── rpc
