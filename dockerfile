@@ -2,7 +2,7 @@ ARG IMAGE=golang:1.12.6-alpine3.9
 ARG WORKDIR=/app
 
 FROM ${IMAGE} as builder
-LABEL author.email=yaphetsglhf@gmail.com
+MAINTAINER author.email=yaphetsglhf@gmail.com
 
 RUN mkdir -p $WORKDIR
 WORKDIR $WORKDIR
