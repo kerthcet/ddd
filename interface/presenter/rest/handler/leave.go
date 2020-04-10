@@ -5,7 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"ddd/application/service"
-	"ddd/infrastructure/common/response_code/code"
+	"ddd/infrastructure/common/responseCode/code"
 	"ddd/interface/dto/rest"
 	"ddd/interface/factory"
 )

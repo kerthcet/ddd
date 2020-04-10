@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"ddd/infrastructure/common/response_code/code"
+	"ddd/infrastructure/common/responseCode/code"
 )
 
 // Response 返回结构
