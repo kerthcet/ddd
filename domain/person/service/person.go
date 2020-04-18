@@ -2,7 +2,7 @@ package service
 
 import (
 	personENT "ddd/domain/person/entity"
-	personRepo "ddd/domain/person/repository/presenter"
+	personRepo "ddd/domain/person/repository/facade"
 )
 
 // FindPersonByID 根据id获得

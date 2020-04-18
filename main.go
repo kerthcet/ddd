@@ -5,10 +5,10 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"ddd/infrastructure/util/migrate"
-	"ddd/interface/presenter/rest/router"
-	"ddd/interface/presenter/rest/router/middleware"
-	"ddd/interface/presenter/rpc/client"
-	"ddd/interface/presenter/rpc/server"
+	"ddd/interface/facade/rest/router"
+	"ddd/interface/facade/rest/router/middleware"
+	"ddd/interface/facade/rpc/client"
+	"ddd/interface/facade/rpc/server"
 )
 
 func main() {

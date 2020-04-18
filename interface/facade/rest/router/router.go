@@ -6,7 +6,7 @@ import (
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 
-	"ddd/interface/presenter/rest/handler"
+	"ddd/interface/facade/rest/handler"
 )
 
 // Load 加载router

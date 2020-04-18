@@ -17,7 +17,7 @@
     │   │   │   ├── event_type.go
     │   │   │   └── leave.go
     │   │   ├── repository                                --- 仓储接口
-    │   │   │   ├── presenter
+    │   │   │   ├── facade
     │   │   │   │   └── leave.go
     │   │   │   ├── persistence                           --- CRUD
     │   │   │   │   └── mysql
@@ -32,7 +32,7 @@
     │       ├── entity
     │       │   └── person.go
     │       ├── repository
-    │       │   ├── presenter
+    │       │   ├── facade
     │       │   │   └── person.go
     │       │   ├── persistence
     │       │   │   └── mysql
@@ -73,7 +73,7 @@
     │   │       └── leave.pb.go
     │   ├── factory                                        --- 工厂函数
     │   │   └── leave.go
-    │   └── presenter                                      --- 对外适配层
+    │   └── facade                                      --- 对外适配层
     │       ├── rest
     │       │   ├── handler
     │       │   │   ├── handler.go
